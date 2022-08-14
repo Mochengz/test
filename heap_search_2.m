@@ -13,6 +13,12 @@ sn=exp(1i*pi*k*t.^2+1i*2*pi*fc*t);
 snr=10;
 sn=awgn(sn,snr);
 sn = sn.';
+T = N/fs;
+S = (T/fs)^(1/2);
+delta_x = (T*fs)^(1/2);
+delta_t = 1/delta_x;
+fx=sn*S;
+ux = linspace(-1/2*delta_x,1/2*delta_x,N);
 pp=mod(2*acot(-k)/pi,2);
 %% 粗搜索
 dpc=0.2;       % 粗搜索间隔
@@ -57,6 +63,6 @@ fh=u*csc(pps*pi/2)     % 中心频率估计值
 f0=fh-mu*Td/2          % 起始频率
 
 
-[X,Y]= meshgrid(px,f);
+[X,Y]= meshgrid(px,ux);
 figure;mesh(X,Y,S_frft)
 

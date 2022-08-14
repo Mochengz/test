@@ -2,11 +2,11 @@ close all
 a=0:1:4;%分数阶傅里叶变换阶数
 
 % 生成一个窗函数
-fx=zeros(2048,1);
-fx(512:1548)=1;
+% fx=zeros(2048,1);
+% fx(512:1548)=1;
 % 正弦函数
-% t=(1:N)/fs;
-% fx=sin(2*pi*t*50);
+t=(1:N)/fs;
+fx=sin(2*pi*t*50);
 
 %归一化
 N =2048;
@@ -15,8 +15,6 @@ T = N/fs;
 S = (T/fs)^(1/2);
 delta_x = (T*fs)^(1/2);
 delta_t = 1/delta_x;
-
-
 fx=fx'*S;
 u = linspace(-1/2*delta_x,1/2*delta_x,N);
 
